@@ -16,7 +16,7 @@ const App = () => {
     resetSelectedUniversities,
   } = useUniversity();
 
-  const { ref } = useClickOutside(hideList);
+  const ref = useClickOutside(hideList);
 
   return (
     <main className="mx-auto max-w-sm grid grid-cols-2 mt-20" ref={ref}>
@@ -38,6 +38,7 @@ const App = () => {
       </button>
       {isListVisible && (
         <>
+          {/* this one exists for the top border only */}
           <div className="border-b-4 border-black" />
           <div className="border-4 border-t-0 border-black col-span-2 p-3">
             <input
