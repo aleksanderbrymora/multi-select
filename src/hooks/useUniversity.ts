@@ -1,5 +1,5 @@
 import debounce from "lodash.debounce";
-import { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 const filterOutDuplicates = (unis: string[]) => {
   return unis.reduce(
@@ -32,6 +32,7 @@ export const useUniversity = () => {
     [universities]
   );
 
+  // this is obviously personal preference, could change the time to anything
   const debouncedGetUniversities = useCallback(
     debounce((f: string) => getUniversityList(f), 300),
     []
@@ -42,28 +43,58 @@ export const useUniversity = () => {
       setUniversities([]);
     } else {
       const unis = await fetchUniversities(newFilter);
-      setUniversities(unis);
+      // because of the delay of the fetch there might be a race condition
+      // that would set the universities to some previous search even though
+      // the filter might be set to an empty string
+      newFilter !== "" ? setUniversities(unis) : setUniversities([]);
     }
   };
 
-  const toggleUniSelection = (name: string) => {
-    console.log({ name });
+  const toggleUniSelection = (
+    name: string,
+    callbacks?: { onSelect?: () => any; onDeselect?: () => any }
+  ) => {
     const foundIndex = selected.findIndex((s) => s === name);
-    if (foundIndex === -1) setSelected((s) => [...s, name]);
-    else setSelected(selected.filter((n) => n !== name));
+
+    if (foundIndex === -1) {
+      setSelected((s) => [...s, name]);
+      if (callbacks?.onSelect) callbacks.onSelect();
+    } else {
+      setSelected(selected.filter((n) => n !== name));
+      if (callbacks?.onDeselect) callbacks.onDeselect();
+    }
   };
+
+  const onFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFilter(value);
+    debouncedGetUniversities(value);
+  };
+
+  const escapeHandler = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      hideList();
+      console.log("Escape pressed");
+    }
+  }, []);
+
+  // Escape key listener
+  useEffect(() => {
+    if (isListVisible) document.addEventListener("keydown", escapeHandler);
+    else document.removeEventListener("keydown", escapeHandler);
+    return () => document.removeEventListener("keydown", escapeHandler);
+  }, [isListVisible]);
 
   return {
     universities: dedupedUniversities,
-    updateList: debouncedGetUniversities,
-    filter,
-    setFilter,
+    selectedUniversities: selected,
+    filterValue: filter,
+    resetSelectedUniversities: resetSelected,
     toggleUniSelection,
-    selected,
-    showList,
     hideList,
+    showList,
     toggleList,
     isListVisible,
-    resetSelected,
+    onFilterChange,
   };
 };
