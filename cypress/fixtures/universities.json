@@ -1,0 +1,42 @@
+[
+  {
+    "country": "Canada",
+    "name": "University of Toronto, Scarborough",
+    "domains": ["scar.utoronto.ca"],
+    "alpha_two_code": "CA",
+    "state-province": null,
+    "web_pages": ["http://www.scar.utoronto.ca/"]
+  },
+  {
+    "country": "Canada",
+    "name": "University of Toronto, Mississauga",
+    "domains": ["utm.utoronto.ca"],
+    "alpha_two_code": "CA",
+    "state-province": null,
+    "web_pages": ["http://www.utm.utoronto.ca/"]
+  },
+  {
+    "country": "Canada",
+    "name": "Victoria University Toronto, University of Toronto",
+    "domains": ["vicu.utoronto.ca"],
+    "alpha_two_code": "CA",
+    "state-province": null,
+    "web_pages": ["http://vicu.utoronto.ca/"]
+  },
+  {
+    "country": "Canada",
+    "name": "University of Toronto",
+    "domains": ["utoronto.ca"],
+    "alpha_two_code": "CA",
+    "state-province": null,
+    "web_pages": ["http://www.utoronto.ca/"]
+  },
+  {
+    "country": "Canada",
+    "name": "Victoria University Toronto, University of Toronto",
+    "domains": ["vicu.utoronto.ca"],
+    "alpha_two_code": "CA",
+    "state-province": null,
+    "web_pages": ["http://vicu.utoronto.ca/"]
+  }
+]

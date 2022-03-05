@@ -25,7 +25,11 @@ export const useUniversity = () => {
   const hideList = useCallback(() => setListVisibility(false), []);
   const showList = useCallback(() => setListVisibility(true), []);
   const toggleList = useCallback(() => setListVisibility((v) => !v), []);
-  const resetSelected = useCallback(() => setSelected([]), []);
+  const resetSelected = useCallback(() => {
+    setSelected([]);
+    setUniversities([]);
+    setFilter("");
+  }, []);
 
   const dedupedUniversities = useMemo(
     () => filterOutDuplicates(universities),
