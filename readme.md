@@ -16,7 +16,7 @@ powinno nastąpić dopiero po kliknięciu poza komponent, po wciśnięciu klawis
 Escape lub w przypadku “toggle”
 3. Po wpisaniu tekstu w wyszukiwarkę pojawiają się dostępne opcje do wyboru.
 Zmieniając stan wyszukiwarki wysyłamy żądania do api wraz z wpisanym
-tasaekstem i na bierząco aktualizujemy listę dostępnych opcji.
+tekstem i na bierząco aktualizujemy listę dostępnych opcji.
 4. Wyszukiwarka powinna działać 'real-time' - dopuszczalne opóźnienie reakcji to
 400ms
 5. Klikając w dostępną opcję:
@@ -34,7 +34,3 @@ komponentu).
 1. Zadanie powinno być wykonane bez użycia jakichkolwiek bibliotek do zarządzania elementami formularza.
 2. Zadanie jest oceniane również pod kątem estetycznym
 
-```json
-// example api response
-{"author": {"name": "hipo", "website": "http://hipolabs.com"}, "github": "https://github.com/Hipo/university-domains-list", "example": "http://universities.hipolabs.com/search?name=middle&country=Turkey"}
-```
