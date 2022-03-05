@@ -34,3 +34,7 @@ komponentu).
 1. Zadanie powinno być wykonane bez użycia jakichkolwiek bibliotek do zarządzania elementami formularza.
 2. Zadanie jest oceniane również pod kątem estetycznym
 
+## Moje uwagi
+
+- strona [nie bedzie dzialac na firefox](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSDidNotSucceed), poniewaz ta przegladarka blokuje cors z localhost z jakiegos powodu
+- strona nie bedzie dzialac w produkcji, w takim stanie jaki jest poniewaz API z ktorego korzystam ma inny protokol niz strona - http vs https, wiec jest blokowany request przez przegladarke
