@@ -13,6 +13,9 @@ const fetchUniversities = async (filter: string) => {
     `http://universities.hipolabs.com/search?name=${filter}`
   );
   const data = (await res.json()) as IUniversity[];
+  // im getting rid of other data, as it's not used in the app.
+  // if it was necessary id use some state management library at that point because
+  // it's already getting messy and probably unoptimised with simple react state
   return data.map((u) => u.name);
 };
 

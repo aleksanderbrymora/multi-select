@@ -9,7 +9,8 @@ interface Props {
     callbacks?: { onSelect?: () => any; onDeselect?: () => any }
   ) => void;
 }
-export const UniversityList: FC<Props> = ({
+
+const UniversityList: FC<Props> = ({
   toggleSelection,
   universities,
   selected,
@@ -35,6 +36,7 @@ export const UniversityList: FC<Props> = ({
           const isSelected = selected.includes(u);
           const onClickHandle = () =>
             toggleSelection(u, {
+              // those are some dummy callbacks that can be substituted for anything else
               onSelect: () => console.log("Selected", u),
               onDeselect: () => console.log("Deselected", u),
             });
@@ -63,3 +65,5 @@ export const UniversityList: FC<Props> = ({
     </div>
   );
 };
+
+export default UniversityList;

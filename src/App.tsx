@@ -1,7 +1,7 @@
 import { useClickOutside } from "./hooks/useClickOutside";
 import { useUniversity } from "./hooks/useUniversity";
 import { Down, Up } from "./Icons";
-import { UniversityList } from "./UniversityList";
+import UniversityList from "./UniversityList";
 
 const App = () => {
   const {
